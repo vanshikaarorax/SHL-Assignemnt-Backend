@@ -13,7 +13,7 @@ def home():
 
 # Route for recommendations
 @main_routes.route('/recommend', methods=['GET'])
-@cross_origin(origins=["https://your-app-frontend.onrender.com"])  # Update with your production frontend URL
+@cross_origin(origins=["*"])  # Allow all origins for testing (replace with your frontend URL when deployed)
 def recommend():
     try:
         # Get user query from the query parameters
@@ -38,7 +38,7 @@ def recommend():
 
 # Route for search
 @main_routes.route('/search', methods=['GET'])
-@cross_origin(origins=["https://your-app-frontend.onrender.com"])  # Update with your production frontend URL
+@cross_origin(origins=["*"])  # Allow all origins for testing (replace with your frontend URL when deployed)
 def search_tests():
     try:
         # Get search query from the request
