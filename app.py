@@ -1,7 +1,5 @@
-# backend/app.py
-
 from flask import Flask
-from flask_cors import CORS  # Import CORS
+from flask_cors import CORS
 from routes import main_routes
 from config import Config
 
@@ -17,7 +15,8 @@ def create_app():
 
     return app
 
-# Running the app
+# Expose app for gunicorn
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     app.run(host=app.config['HOST'], port=app.config['PORT'])
