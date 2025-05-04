@@ -18,6 +18,8 @@ urllib3==2.4.0
 webdriver-manager==4.0.2
 websocket-client==1.8.0
 wsproto==1.2.0
+flask-cors
+
 
 # Added Flask
 Flask==2.3.3  # Adjust the version based on your needs, or pin to a specific one
