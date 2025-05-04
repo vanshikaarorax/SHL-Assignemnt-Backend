@@ -6,8 +6,14 @@ from recommendation import recommend_agents
 # Blueprint for main routes
 main_routes = Blueprint('main', __name__)
 
+# Home route (optional)
+@main_routes.route('/', methods=['GET'])
+def home():
+    return "Welcome to the Flask app!"
+
+# Route for recommendations
 @main_routes.route('/recommend', methods=['GET'])
-@cross_origin(origins=["http://localhost:3000"])  # Allow requests only from localhost:3000
+@cross_origin(origins=["https://your-app-frontend.onrender.com"])  # Update with your production frontend URL
 def recommend():
     try:
         # Get user query from the query parameters
@@ -30,10 +36,9 @@ def recommend():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-# New search route
+# Route for search
 @main_routes.route('/search', methods=['GET'])
-@cross_origin(origins=["http://localhost:3000"])  # Allow requests only from localhost:3000
+@cross_origin(origins=["https://your-app-frontend.onrender.com"])  # Update with your production frontend URL
 def search_tests():
     try:
         # Get search query from the request
@@ -45,7 +50,6 @@ def search_tests():
         dataset = get_dataset()
 
         # Perform a search based on the query
-        # Example simple search logic: case-insensitive search for query in the 'name' field
         search_results = dataset[dataset['name'].str.contains(query, case=False, na=False)]
 
         # Convert results to list of dictionaries
